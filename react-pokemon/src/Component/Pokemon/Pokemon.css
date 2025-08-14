@@ -13,7 +13,7 @@ h3 {
   list-style-type: none;
   margin-bottom: 2rem;
   width: 17rem;
-  height: 12rem;
+  height: 26rem;
   background-color: #f9f9f9;
 }
 .pokemon-figure {
@@ -25,15 +25,37 @@ h3 {
   border-radius: 54% 15%;
 }
 
-.pokemon-figure:hover {
+.pokemon-name {
+  color: #000000;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 3rem;
+}
+.pokemon-img {
+  height: 4rem;
+  width: 6rem;
+}
+
+.pokemon-figure:hover,
+.pokemon-img {
   margin-top: 0rem;
   margin-bottom: 3rem;
   border-radius: 54% 15%;
+  height: 5rem;
+  width: 10rem;
   transition: margin-top 0.2s ease, transform 0.6s ease;
+  transition: width 0.2s ease, transform 0.6s ease;
 }
 
-.pokemon-name{
-    color: #000000;
-        font-size: 2rem;
-
+.pokemon-btn{
+    background-color: #25A05A;
+    border-radius: 3rem;
+    margin: 0rem 2rem;
+    width: 12rem;
+    height: 3rem;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.2rem;
+    
 }
+

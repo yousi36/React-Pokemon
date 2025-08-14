@@ -5,25 +5,30 @@ export const Pokemon = () => {
   const [pokemonData, setPokemonData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const apiUrl = "https://pokeapi.co/api/v2/ability/?offset=0&limit=20";
-  //fetchapi functionality 
-  const fetchPokemon = () => {
-    fetch(apiUrl)
-      .then((data) => {
-        return data.json();
-      })
-      .then((data) => { 
-        setPokemonData(data.results);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-      });
+  const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=124";
+  //fetchapi functionality
+  const fetchPokemon = async () => {
+    try{
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    
+    const pokemonPromise=data.results.map(async(curr)=>{
+      const res=await fetch(curr.url);
+      return await res.json();
+    })
+    
+    const detailPokemonData=await Promise.all(pokemonPromise);
+    setPokemonData(detailPokemonData)
+    setLoading(false);
+    }
+    catch{
+
+    }
   };
-  useEffect(()=>{
-     fetchPokemon();
-  },[])
+  useEffect(() => {
+    fetchPokemon();
+  }, []);
   //loading functionality
   if (loading) {
     return <h3>Loading...</h3>;
@@ -40,7 +45,7 @@ export const Pokemon = () => {
         <section>
           <ul className="pokemon-container">
             {pokemonData.map((curr) => {
-                return <PokemonCard  className="pokemon-card" item={curr} key={curr.name}></PokemonCard>
+              return <PokemonCard item={curr} key={curr.id}></PokemonCard>;
             })}
           </ul>
         </section>
