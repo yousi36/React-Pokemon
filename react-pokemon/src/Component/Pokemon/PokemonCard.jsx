@@ -23,12 +23,45 @@ export function PokemonCard({ item }) {
 
         <div className="grid-three-cols">
           <div className="pokemon-info">
-            <p>{item.base_experience}</p>
-            <span> Experience:</span>
+            <p>
+              <span> Height:</span> {item.height}
+            </p>
           </div>
           <div className="pokemon-info">
-            <p>{item.stats[1].base_stat}</p>
-            <span>Attack:</span>
+            <p>
+              <span>Weight:</span>
+              {item.weight}
+            </p>
+          </div>
+          <div className="pokemon-info">
+            <p>
+              <span>Speed:</span>
+              {item.stats[5].base_stat}
+            </p>
+          </div>
+        </div>
+
+         <div className="grid-three-cols">
+          <div className="pokemon-info">
+            <p>
+              {item.base_experience}
+              <span> Experience</span> 
+            </p>
+          </div>
+          <div className="pokemon-info">
+            <p>
+               {item.stats[1].base_stat}
+              <span>Attack:</span>
+            </p>
+          </div>
+          <div className="pokemon-info">
+            <p>
+             
+              {item.abilities.map(abilityInfo=>{
+                return abilityInfo.ability.name
+              })}
+               <span>Ability:</span>
+            </p>
           </div>
         </div>
       </div>

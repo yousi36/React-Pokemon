@@ -5,6 +5,7 @@ export const Pokemon = () => {
   const [pokemonData, setPokemonData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [inputValue,setInputValue]=useState("");
   const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=124";
   //fetchapi functionality
   const fetchPokemon = async () => {
@@ -42,6 +43,11 @@ export const Pokemon = () => {
         <header>
           <h3>Lets Catch Pokemon</h3>
         </header>
+        <div className="pokemon-search">
+          <input type="text" placeholder="Search " value={inputValue} onChange={(e)=>{
+            setInputValue(e.target.value)
+          }}></input>
+        </div>
         <section>
           <ul className="pokemon-container">
             {pokemonData.map((curr) => {

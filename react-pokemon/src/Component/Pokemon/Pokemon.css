@@ -12,8 +12,8 @@ h3 {
   border: 1px solid black;
   list-style-type: none;
   margin-bottom: 2rem;
-  width: 17rem;
-  height: 26rem;
+  width: 23rem;
+  height: 30rem;
   background-color: #f9f9f9;
 }
 .pokemon-figure {
@@ -47,15 +47,45 @@ h3 {
   transition: width 0.2s ease, transform 0.6s ease;
 }
 
-.pokemon-btn{
-    background-color: #25A05A;
-    border-radius: 3rem;
-    margin: 0rem 2rem;
-    width: 12rem;
-    height: 3rem;
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.2rem;
-    
+.pokemon-btn {
+  background-color: #25a05a;
+  border-radius: 3rem;
+  margin: 0rem 2rem;
+  width: 20rem;
+  height: 3rem;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.2rem;
 }
 
+.grid-three-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 2rem;
+}
+.pokemon-info {
+  width: 1rem;
+}
+.pokemon-info p span {
+  display: inline-block;
+}
+.pokemon-search {
+  display: flex;
+  justify-content: center;
+}
+.pokemon-search input {
+  width: 23rem;
+  height: 4rem;
+  color: rgb(25, 25, 25);
+  border: 1px outline black;
+  border-style: none none solid none;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding-left: 2rem;
+  justify-content: center;
+}
+.pokemon-search input:focus {
+
+  border-color: #4a90e2;
+  box-shadow: 0 0 4px rgba(74, 144, 226, 0.5);
+}
