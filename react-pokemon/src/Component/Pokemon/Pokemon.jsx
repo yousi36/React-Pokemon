@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Pokemon.css";
 import { PokemonCard } from "./PokemonCard";
 export const Pokemon = () => {
-  const [pokemonData, setPokemonData] = useState(null);
+  const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [inputValue,setInputValue]=useState("");
@@ -23,13 +23,17 @@ export const Pokemon = () => {
     setPokemonData(detailPokemonData)
     setLoading(false);
     }
-    catch{
-
+    catch(error){
+      setError(error.message);
+      setLoading(false);
     }
   };
   useEffect(() => {
     fetchPokemon();
   }, []);
+
+  //loading functionality 
+  const searchData=pokemonData.filter((curr)=> curr.name.toLowerCase().includes(inputValue.toLowerCase()))
   //loading functionality
   if (loading) {
     return <h3>Loading...</h3>;
@@ -50,7 +54,7 @@ export const Pokemon = () => {
         </div>
         <section>
           <ul className="pokemon-container">
-            {pokemonData.map((curr) => {
+            {searchData.map((curr) => {
               return <PokemonCard item={curr} key={curr.id}></PokemonCard>;
             })}
           </ul>
